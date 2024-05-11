@@ -11,7 +11,7 @@ function  Displayname() {
         event.preventDefault();
         try {
             let getfullName=name.concat(" ",lastname);
-            setgetfullName(getfullName);
+            setFullname(getfullName);
 
         } catch (error) {     
             console.log("Error :",error)
