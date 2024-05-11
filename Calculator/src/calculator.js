@@ -1,25 +1,30 @@
 import React from "react";
 import { useState } from "react";
-import './calculator.css';
-function Calculator(){
+import "./calculator.css";
 
-const [input, setInput] = useState('');
-  const [result, setResult] = useState('');
+function Calculator() {
+  const [input, setInput] = useState("");
+  const [result, setResult] = useState("");
 
   const handleClick = (value) => {
-    if (value === '=') {
-      try {
-        setResult(eval(input));
-      } catch (error) {
-        setResult('Error');
+    if (value === "=") {
+      if (input.trim() === "") {
+        setResult("Error: Incomplete expression");
+      } else {
+        try {
+          setResult(eval(input));
+        } catch (error) {
+          setResult("Error: Invalid expression");
+        }
       }
-    } else if (value === 'C') {
-      setInput('');
-      setResult('');
+    } else if (value === "C") {
+      setInput("");
+      setResult("");
     } else {
       setInput((prevInput) => prevInput + value);
     }
   };
+  
 
   return (
     <div className="calculator">
@@ -27,13 +32,14 @@ const [input, setInput] = useState('');
       <input type="text" value={input} readOnly />
       <div className="result">{result}</div>
       <div className="buttons">
-        {[7, 8, 9, '+', 4, 5, 6, '-', 1, 2, 3, '*', 'C', 0, '/', '='].map((item, index) => (
-          <button key={index} onClick={() => handleClick(item)}>
-            {item}
-          </button>
-        ))}
+        {[7, 8, 9, "+", 4, 5, 6, "-", 1, 2, 3, "*", "C", 0, "/", "="].map(
+          (item, index) => (
+            <button key={index} onClick={() => handleClick(item)}>
+              {item}
+            </button>
+          )
+        )}
       </div>
-      
     </div>
   );
 }
