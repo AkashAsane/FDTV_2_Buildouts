@@ -34,7 +34,7 @@ function  Displayname() {
                 <div>
                     <label>First name :</label>
                     <input
-                        type='text'
+                        type="text"
                         value={name}
                         onChange={handleChange}
                         required
@@ -43,13 +43,13 @@ function  Displayname() {
                 <div>
                     <label>Last name :</label>
                     <input
-                        type='text'
+                        type="text"
                         value={lastname}
                         onChange={handlelastname}
                         required
                     />
                 </div>
-                <button type='submit'>Submit</button>
+                <button type="submit">Submit</button>
             </form>
             { getfullName &&(
                     <p>Full Name:{getfullName}</p>
