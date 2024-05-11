@@ -21,7 +21,7 @@ function  Countrysearch() {
       },[]);
 
 
-      const filteredCountries=data.filter((country)=>country.name.common.toLowerCase().startsWith(query.toLowerCase()))
+      const filteredCountries=data.filter((country)=>country.name.common.toLowerCase().includes(query.toLowerCase()))
       console.log(filteredCountries);
          
       return(
