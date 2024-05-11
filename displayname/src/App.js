@@ -2,9 +2,9 @@ import React, { useEffect, useState } from 'react';
 import './App.css';
 
 function  Displayname() {
-    const [name, setName] = useState("");
-    const [lastname, setLastname] = useState("");
-    const [getfullName, setgetfullName] = useState("");
+    const [name, setName] = useState();
+    const [lastname, setLastname] = useState();
+    const [getfullName, setgetfullName] = useState('');
   
 
     const handleSubmit = (event) => {
