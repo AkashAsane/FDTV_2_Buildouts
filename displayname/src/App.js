@@ -4,20 +4,28 @@ import './App.css';
 function  Displayname() {
     const [name, setName] = useState("");
     const [lastname, setLastname] = useState("");
-    const [getfirst, setGetFirst] = useState("");
-    const [getlast, setGetLast] = useState("");
-    const [isSubmitted, setIsSubmitted] = useState(false);
+    const [getfullName, setgetfullName] = useState("");
+  
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        if (name.trim() !== "" || lastname.trim() !== "") {
-            setIsSubmitted(true);
-            setGetFirst(name);
-            setGetLast(lastname);
-        } else {
-            setIsSubmitted(false);
+        try {
+            let getfullName=name.concat(" ",lastname);
+            setgetfullName(getfullName);
+
+        } catch (error) {     
+            console.log("Error :",error)
+            
         }
     }
+
+      const handleChange=(event)=>{
+        setName(event.target.value);
+      }
+
+      const handlelastname=(event)=>{
+        setLastname(event.target.value);
+      }
 
     return (
         <div>
@@ -28,7 +36,8 @@ function  Displayname() {
                     <input
                         type='text'
                         value={name}
-                        onChange={(e) => setName(e.target.value)}
+                        onChange={handleChange}
+                        required
                     />
                 </div>
                 <div>
@@ -36,17 +45,19 @@ function  Displayname() {
                     <input
                         type='text'
                         value={lastname}
-                        onChange={(e) => setLastname(e.target.value)}
+                        onChange={handlelastname}
+                        required
                     />
                 </div>
                 <button type='submit'>Submit</button>
             </form>
+            { getfullName &&(
+                    <p>Full Name:{getfullName}</p>
+              )
 
-            <div>
-                {isSubmitted && (name.trim() !== "" || lastname.trim() !== "") ? (
-                    <div>Full Name: {getfirst} {getlast}</div>
-                ) : null}
-            </div>
+            }
+
+            
         </div>
     );
 }
