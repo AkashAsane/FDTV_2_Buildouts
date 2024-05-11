@@ -4,7 +4,7 @@ import './App.css';
 function  Displayname() {
     const [name, setName] = useState();
     const [lastname, setLastname] = useState();
-    const [getfullName, setgetfullName] = useState('');
+    const [fullname, setFullname] = useState('');
   
 
     const handleSubmit = (event) => {
@@ -28,37 +28,36 @@ function  Displayname() {
       }
 
     return (
-        <div>
-            <h2>Full Name Display</h2>
+        <>
+            <h1>Full Name Display</h1>
             <form onSubmit={handleSubmit}>
-                <div>
-                    <label>First name :</label>
+                    <label>First Name :</label>
                     <input
                         type="text"
                         value={name}
                         onChange={handleChange}
                         required
                     />
-                </div>
-                <div>
-                    <label>Last name :</label>
+                    <br/>
+                    <label>Last Name :</label>
                     <input
                         type="text"
                         value={lastname}
                         onChange={handlelastname}
                         required
                     />
-                </div>
+                    <br/>
+                
                 <button type="submit">Submit</button>
             </form>
-            { getfullName &&(
-                    <p>Full Name:{getfullName}</p>
+            { fullname &&(
+                <p>Full Name: {fullname}</p>
               )
 
             }
 
             
-        </div>
+        </>
     );
 }
 
